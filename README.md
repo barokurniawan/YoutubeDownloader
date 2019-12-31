@@ -1,5 +1,5 @@
 # YoutubeDownloader
-YoutubeDownloader is a [youtube-dl](https://github.com/ytdl-org/youtube-dl) web based implementation writen in Go. 
+YoutubeDownloader is a [youtube-dl](https://github.com/ytdl-org/youtube-dl) web based implementation written in Go. 
 It is support multiple format audio or video.
 
 
