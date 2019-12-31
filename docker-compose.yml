@@ -1,0 +1,30 @@
+version: '3'
+networks:
+    youtubedl_network:
+        driver: bridge
+
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: docker/app.dockerfile
+        image: youtubedl_app
+        networks:
+            - youtubedl_network
+        container_name: youtubedl_app
+        volumes:
+            - ./:/go/src/youtubedl
+        depends_on:
+            - redis
+        restart: unless-stopped
+        ports:
+            - "3000:3000"
+        environment: 
+            REDIS_URL: redis:6379
+
+    redis:
+        image: "redis:alpine"
+        container_name: youtubedl_cache
+        networks:
+            - youtubedl_network
+        restart: unless-stopped
